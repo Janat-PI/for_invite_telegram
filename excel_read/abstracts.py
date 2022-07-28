@@ -1,5 +1,7 @@
 from abc import ABC, abstractmethod
 
+from excel_read.helper import phone
+
 
 class AbstractReader(ABC): 
     """
@@ -23,3 +25,14 @@ class AbstractReader(ABC):
         it's method for write file
         """
 
+
+class AbstractValidate(ABC):
+
+    # @abstractmethod
+    # def __init__(self) -> None:
+    #     pass
+
+
+    @abstractmethod
+    def validate_number(self) -> phone:
+        pass
