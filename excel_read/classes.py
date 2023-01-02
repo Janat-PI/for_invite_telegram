@@ -2,8 +2,24 @@ from typing import Any
 
 import pandas as pd
 
-from abstracts import AbstractReader
-from helper import file_path, User
+from excel_read.abstracts import AbstractReader
+from excel_read.helper import file_path
+from excel_read.validators import Validate
+
+
+class User:
+
+    validate = Validate()
+    
+    def __init__(self, name: str, phone) -> None:
+        self.name = name
+        self.phone = self.validate.validate_number(phone)
+
+    def __repr__(self) -> str:
+        return f"{self.__class__} {self.name} {self.phone}"
+
+    def __str__(self) -> str:
+        return f"{self.name} {self.phone}"
 
 
 class ReaderExcel(AbstractReader):
@@ -53,7 +69,7 @@ class Converter():
         self._data = data
 
 
-    def generate_dict(self, choice: Any) -> list[User] | Any:
+    def generate_to_new_dict(self, choice: Any) -> list[User] | Any:
         """
         it is function return dict for choice data
         """
@@ -70,4 +86,5 @@ class Converter():
                 return new_obj
             case _:
                 return []
+
 

@@ -3,6 +3,7 @@ from dataclasses import dataclass
 
 
 file_path: TypeAlias = str
+phone: TypeAlias = str
 
 
 class ReadKeys(NamedTuple):
@@ -11,10 +12,12 @@ class ReadKeys(NamedTuple):
     data: Any
 
 
-@dataclass(slots=True, frozen=True)
-class User:
-    name: str
-    phone: str
+# @dataclass(slots=True, frozen=True)
+# class User:
+#     name: str
+#     phone: str
+
+
 
 
 
